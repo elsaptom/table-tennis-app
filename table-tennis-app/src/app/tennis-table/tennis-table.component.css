@@ -39,3 +39,8 @@ table {
     display: flex;
     justify-content: center;
 }
+
+.revert-button {
+    background: none;
+    border: none;
+}

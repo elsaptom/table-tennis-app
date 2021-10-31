@@ -15,6 +15,8 @@ export class TennisTableComponent implements OnInit {
   gameStatistics: any ={};
   leftArrow = faArrowLeft;
   previousAction: string = '';
+  previousPlayer: number;
+  disabledButton: boolean;
   @ViewChild(PlayerActionsComponent, {static : true}) child : PlayerActionsComponent;
 
   constructor(private modalService: NgbModal, private tennisService: TennisService) { }
@@ -69,7 +71,10 @@ export class TennisTableComponent implements OnInit {
 
   revertAction() {
     this.tennisService.previousAction.subscribe(data => this.previousAction = data);
-    this.child.playerAction(true, this.previousAction);
+    this.tennisService.previousplayer.subscribe(data => this.previousPlayer = data);
+    if (this.previousPlayer !== 0) {
+    this.child.playerAction(true, this.previousAction, this.previousPlayer);
+    }
   }
 
 }

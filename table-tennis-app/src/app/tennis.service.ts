@@ -14,14 +14,17 @@ export class TennisService {
   playerOneStatistics =  {};
   playerTwoStatistics =  {};
   action = '';
+  player: number = 0;
   private dataSource = new BehaviorSubject(this.score); 
   private statistics1 = new BehaviorSubject(this.playerOneStatistics);
   private statistics2 = new BehaviorSubject(this.playerTwoStatistics);
   private actionType = new BehaviorSubject(this.action);
+  private previousPlayer = new BehaviorSubject(this.player);
   currentData = this.dataSource.asObservable();
   currentStatistics1 = this.statistics1.asObservable();
   currentStatistics2 = this.statistics2.asObservable();
   previousAction = this.actionType.asObservable();
+  previousplayer = this.previousPlayer.asObservable();
   constructor(private http: HttpClient) { }
 
   updateScore(newScore: any) {
@@ -38,6 +41,10 @@ export class TennisService {
 
   updateAction(action: any) {
     this.actionType.next(action);
+  }
+
+  updatePlayer(player: any) {
+    this.previousPlayer.next(player);
   }
 
   saveStatistics(statistics: any): Observable<any> {
