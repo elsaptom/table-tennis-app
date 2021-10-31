@@ -24,6 +24,9 @@ export class TennisTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+    * Function to open modal
+    */
   openModal(winner: any) {
     this.modalService.open(winner , {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closed = `Closed with: ${result}`;
@@ -44,6 +47,9 @@ export class TennisTableComponent implements OnInit {
     }
   }
 
+  /**
+    * Function to display winner player
+    */
   winnerFound(event:any) {
     this.winner = event;
     this.tennisService.currentStatistics1.subscribe(data => 
@@ -59,6 +65,9 @@ export class TennisTableComponent implements OnInit {
     console.log(event);    
   }
 
+  /**
+    * Function to call api to save statistics
+    */
   saveStatistics() {
     this.tennisService.saveStatistics(this.gameStatistics).subscribe(data=> {
       console.log('Saved');
@@ -69,6 +78,9 @@ export class TennisTableComponent implements OnInit {
     })
   }
 
+  /**
+    * Function to revert the action
+    */
   revertAction() {
     this.tennisService.previousAction.subscribe(data => this.previousAction = data);
     this.tennisService.previousplayer.subscribe(data => this.previousPlayer = data);

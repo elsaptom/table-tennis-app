@@ -85,7 +85,11 @@ export class PlayerActionsComponent implements OnInit {
           default:
             break;
         }
-        revert && playerObj.points > 0 ? --playerObj.points : ++playerObj.points;
+        if (revert) {
+          playerObj.points > 0 ? --playerObj.points : playerObj.points= 0;
+        } else {
+          ++playerObj.points
+        }
         this.player === 1 ? this.score.playerOne = playerObj.points : this.score.playerTwo = playerObj.points;
         if (this.score.playerOne === 11 || this.score.playerTwo === 11) {
           this.score.playerOne === 11 ? this.winner.emit(1) :  this.winner.emit(2);
