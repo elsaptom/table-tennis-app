@@ -47,16 +47,17 @@ export class PlayerActionsComponent implements OnInit {
    */
 
    playerAction(revert: any, actionType: any, player = this.player) {
-    //  this.previousPlayer = this.player;
-    this.tennisService.updatePlayer(this.player);
     this.tennisService.updateAction(actionType);
     console.log(this.player, actionType);
     // revert ? this.player = this.previousPlayer : this.player = this.player;
     if (revert) {
-      this.player = player;
-    this.tennisService.updatePlayer(0);
+      this.tennisService.updatePlayer(player);
+    this.tennisService.previousplayer.subscribe(data => this.player = data);
+      // this.player = player;
       this.tennisService.currentStatistics1.subscribe(data => this.playerStatistics.playerOne = data);
       this.tennisService.currentStatistics2.subscribe(data => this.playerStatistics.playerTwo = data); 
+    } else {
+      this.tennisService.updatePlayer(this.player);
     }
     if(this.player === 1) {
       this.getStatistics(revert, this.playerStatistics.playerOne, actionType);

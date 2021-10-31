@@ -72,9 +72,7 @@ export class TennisTableComponent implements OnInit {
   revertAction() {
     this.tennisService.previousAction.subscribe(data => this.previousAction = data);
     this.tennisService.previousplayer.subscribe(data => this.previousPlayer = data);
-    if (this.previousPlayer !== 0) {
     this.child.playerAction(true, this.previousAction, this.previousPlayer);
-    }
   }
 
 }
