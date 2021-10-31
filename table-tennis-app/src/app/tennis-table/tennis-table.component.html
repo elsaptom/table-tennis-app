@@ -1,0 +1,63 @@
+<div class="text-center app-body">
+    <div>
+        <h3>Table Tennis App</h3>
+        <div class="text-right">
+            <fa-icon (click)="revertAction()" class="fa-2x click-icon" [icon]="leftArrow"></fa-icon>
+        </div>
+    </div>
+    <div class="court">
+        <app-player-actions  (winner)="winnerFound($event)" [player]="1"></app-player-actions>
+        <div class="player-display">
+            <div class="player-box">Player 1</div>
+            <div>VS</div>
+            <div class="player-box">Player 2</div>
+        </div>
+    <app-player-actions  (winner)="winnerFound($event)"  [player]="2"></app-player-actions>
+    </div>
+    <div class="text-center">
+        <app-player-score></app-player-score>
+    </div>
+</div>
+<button id="auto" style="display: none;" class="btn btn-lg btn-outline-primary" (click)="openModal(content)">Open My Modal</button>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Table Tennis Winner</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <h2>Congratulations Player {{winner}}</h2>
+                <h3 class="text-center">Statistics</h3>
+                <table>
+                    <tr>
+                        <th>Player</th>
+                        <th>Smash</th>
+                        <th>Ace</th>
+                        <th>Fluke</th>
+                        <th>Total Points</th>
+                    </tr>
+                    <tr>
+                        <td>{{gameStatistics.playerOne.name}}</td>
+                        <td>{{gameStatistics.playerOne.smashes}}</td>
+                        <td>{{gameStatistics.playerOne.aces}}</td>
+                        <td>{{gameStatistics.playerOne.fluckes}}</td>
+                        <td>{{gameStatistics.playerOne.points}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{gameStatistics.playerTwo.name}}</td>
+                        <td>{{gameStatistics.playerTwo.smashes}}</td>
+                        <td>{{gameStatistics.playerTwo.aces}}</td>
+                        <td>{{gameStatistics.playerTwo.fluckes}}</td>
+                        <td>{{gameStatistics.playerTwo.points}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+        </div>
+      </ng-template>
+

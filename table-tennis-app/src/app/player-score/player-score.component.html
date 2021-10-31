@@ -1,0 +1,12 @@
+<div class="play-score">
+    <div class="display-score">
+        <div>Player 1</div>
+        <div class="score">{{score.playerOne}}</div>
+        <div *ngIf="score.playerOne === 11 || score.playerTwo === 11">WINNER PLAYER 
+            <span *ngIf="score.playerOne === 11">Player 1</span>
+            <span *ngIf="score.playerTwo === 11">Player 2</span>
+        </div>
+        <div class="score">{{score.playerTwo}}</div>
+        <div>Player 2</div>
+    </div>
+</div>

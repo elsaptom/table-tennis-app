@@ -1,0 +1,41 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+.app-body {
+    padding: 5%;
+}
+
+.player-display {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    align-items: center;
+}
+
+
+.player-box {
+    background-color: #12C6FF;
+    height: 45px;
+    width: 76px;
+    left: 238px;
+    top: 251px;
+    border-radius: 0px;
+    padding: 10px;
+}
+
+.court {
+    display: flex;
+    justify-content: center;
+}
